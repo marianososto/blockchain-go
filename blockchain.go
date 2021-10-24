@@ -40,10 +40,10 @@ func generateBlock(oldBlock Block, BPM int) (Block, error) {
 	newBlock.Difficulty = oldBlock.Difficulty
 
 	for i := 0; ; i++ {
-		hex := fmt.Sprintf("%x", i)
-		newBlock.Nonce = hex
+		ihex := fmt.Sprintf("%x", i)
+		newBlock.Nonce = ihex
 		newHash := calculateHash(newBlock)
-		if isHashValid(newHash, newBlock.Difficulty) {
+		if !isHashValid(newHash, newBlock.Difficulty) {
 			fmt.Println(newHash + " not valid hash.")
 			time.Sleep(time.Duration(500) * time.Millisecond) // to simulate the PoW duration
 			continue
