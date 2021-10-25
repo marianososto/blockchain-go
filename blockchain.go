@@ -45,10 +45,10 @@ func generateBlock(oldBlock Block, BPM int) (Block, error) {
 		newHash := calculateHash(newBlock)
 		if !isHashValid(newHash, newBlock.Difficulty) {
 			fmt.Println(newHash + " not valid hash.")
-			time.Sleep(time.Duration(500) * time.Millisecond) // to simulate the PoW duration
+			//time.Sleep(time.Duration(500) * time.Millisecond) // to simulate the PoW duration
 			continue
 		} else {
-			fmt.Println(newHash + " work is done")
+			fmt.Printf("\n"+newHash+" work is done and it took:%d attempts", i)
 			newBlock.Hash = newHash
 			break
 		}
